@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   collapsed = true;
-  @Output() futureSlected = new EventEmitter<string>()
+  @Output() featureSlected = new EventEmitter<string>()
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSelect(x: string) {
-    this.futureSlected.emit(x);
+    this.featureSlected.emit(x);
   }
 
 }
