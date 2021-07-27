@@ -1,13 +1,16 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
-import { RecipeService } from "./recipes/recipe.service";
-import { ShopingListService } from "./shoping-list/shoping-list.service";
+import { RecipesComponent } from "./recipes/recipes.component";
+import { ShopingListComponent } from "./shoping-list/shoping-list.component";
+
+
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-    { path: 'recipes', component: RecipeService},
-    { path: 'shoping-list', component: ShopingListService },
+    { path: 'recipes', component: RecipesComponent},
+    { path: 'shoping-list', component: ShopingListComponent },
+    
 ]
 
 @NgModule({
