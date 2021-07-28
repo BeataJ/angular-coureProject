@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -12,10 +14,11 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(
     private recipieService: RecipeService,
-    private 
+    private route: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
+    
   }
 
   onAddToShopingList() {
