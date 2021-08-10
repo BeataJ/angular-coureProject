@@ -20,8 +20,8 @@ export class ShopingEditComponent implements OnInit {
   }
 
   onAddItem(form: NgForm) {
-    
-    const newIngredient = new Ingredient(ingName,ingAmount);
+    const value = form.value;
+    const newIngredient = new Ingredient(value.name,value.amount);
     this.slService.addIngredient(newIngredient);
   }
 
