@@ -15,6 +15,7 @@ export class ShopingEditComponent implements OnInit, OnDestroy {
   subscription: Subscription
   editMode = false;
   editedNumberIndex: number;
+  editedIiem: Ingredient;
 
   constructor(private slService: ShopingListService) { }
 
@@ -24,6 +25,7 @@ export class ShopingEditComponent implements OnInit, OnDestroy {
         (index: number) => {
           this.editedNumberIndex = index;
           this.editMode = true;
+          this.editedIiem = this.slService.getIngredient(index);
         }
       );
   }
