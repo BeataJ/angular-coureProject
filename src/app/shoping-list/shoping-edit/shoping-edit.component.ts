@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { ShopingListService } from '../shoping-list.service';
   templateUrl: './shoping-edit.component.html',
   styleUrls: ['./shoping-edit.component.css']
 })
-export class ShopingEditComponent implements OnInit {
+export class ShopingEditComponent implements OnInit, OnDestroy {
   subscription: Subscription
   
 
@@ -26,6 +26,10 @@ export class ShopingEditComponent implements OnInit {
     const value = form.value;
     const newIngredient = new Ingredient(value.name,value.amount);
     this.slService.addIngredient(newIngredient);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
