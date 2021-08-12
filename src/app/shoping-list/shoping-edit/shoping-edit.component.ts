@@ -13,13 +13,19 @@ import { ShopingListService } from '../shoping-list.service';
 })
 export class ShopingEditComponent implements OnInit, OnDestroy {
   subscription: Subscription
-  
+  editMode = false;
+  editedNumberIndex: number;
 
   constructor(private slService: ShopingListService) { }
 
   ngOnInit(): void {
     this.subscription = this.slService.startedEditing
-      .subscribe();
+      .subscribe(
+        (index: number) => {
+          this.editedNumberIndex = index;
+          this.editMode = true;
+        }
+      );
   }
 
   onAddItem(form: NgForm) {
