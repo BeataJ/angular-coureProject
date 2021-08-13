@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -12,6 +12,7 @@ import { ShopingListService } from '../shoping-list.service';
   styleUrls: ['./shoping-edit.component.css']
 })
 export class ShopingEditComponent implements OnInit, OnDestroy {
+  @ViewChild('f') slForm: NgForm
   subscription: Subscription
   editMode = false;
   editedNumberIndex: number;
