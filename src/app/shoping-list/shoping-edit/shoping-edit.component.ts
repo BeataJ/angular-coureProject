@@ -16,7 +16,7 @@ export class ShopingEditComponent implements OnInit, OnDestroy {
   subscription: Subscription
   editMode = false;
   editedItemIndex: number;
-  editedIiem: Ingredient;
+  editedItem: Ingredient;
 
   constructor(private slService: ShopingListService) { }
 
@@ -26,10 +26,10 @@ export class ShopingEditComponent implements OnInit, OnDestroy {
         (index: number) => {
           this.editedItemIndex = index;
           this.editMode = true;
-          this.editedIiem = this.slService.getIngredient(index);
+          this.editedItem = this.slService.getIngredient(index);
           this.slForm.setValue({
-            name: this.editedIiem.name,
-            amount: this.editedIiem.amount
+            name: this.editedItem.name,
+            amount: this.editedItem.amount
           })
         }
       );
