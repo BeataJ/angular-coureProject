@@ -56,7 +56,4 @@ export class RecipeService {
   updateRecipe(index: number, newRecipe: Recipe) {
     this.recipes[index] = newRecipe;
    }
-
-
-  
 }
