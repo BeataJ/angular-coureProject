@@ -39,7 +39,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onDeleteRecipe() {
-    
+    this.recipieService.deleteRecipe(this.id)
   }
 
 }
