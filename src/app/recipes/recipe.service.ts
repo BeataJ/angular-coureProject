@@ -20,7 +20,7 @@ export class RecipeService {
         new Ingredient('cucina', 2),
         new Ingredient('pepper', 1),
         new Ingredient('sweet sos', 1),
-        new Ingredient('pinch of sesam',0)
+        new Ingredient('pinch of sesam',3)
       ]
       ),
     new Recipe(
