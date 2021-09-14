@@ -22,6 +22,9 @@ export class DataStorageService {
     }
 
     fetchRecipes(){
-        
+        this.http.get(environment.apiUrl)
+            .subscribe(recipe => {
+                console.log(recipe);
+            });
     }
 }
