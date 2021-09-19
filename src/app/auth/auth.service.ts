@@ -3,6 +3,14 @@ import { Injectable } from "@angular/core";
 
 import { environment } from "../../environment-app";
 
+interface AuthResponseData {
+    idToken: string,
+    email: string,
+    refreshToken: string,
+    expiresIn: string,
+    localId: string
+}
+
 @Injectable({
     providedIn: 'root'
 })
