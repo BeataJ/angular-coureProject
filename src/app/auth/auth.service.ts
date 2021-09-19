@@ -19,7 +19,7 @@ export class AuthService {
     constructor(private http: HttpClient) {}
 
     signup(email: string, password: string) {
-       return this.http.post(environment.authUrl,
+       return this.http.post<AuthResponseData>(environment.authUrl,
         {
             email,
             password,
