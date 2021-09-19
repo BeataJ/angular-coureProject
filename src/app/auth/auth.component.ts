@@ -34,7 +34,7 @@ export class AuthComponent implements OnInit {
           console.log(resData);
         },
           error => {
-            console.log(console.error);
+            console.log(error);
           }
         );
     }
