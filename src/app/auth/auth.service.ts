@@ -21,7 +21,7 @@ export class AuthService {
     constructor(private http: HttpClient) {}
 
     signup(email: string, password: string) {
-       return this.http.post<AuthResponseData>(environment.authUrl,
+       return this.http.post<AuthResponseData>(environment.authSignUp,
         {
             email,
             password,
@@ -39,5 +39,15 @@ export class AuthService {
             }
             return throwError(errorMessage);
         })) 
+    }
+
+    login(email: string, password: string) {
+        this.http.post(environment.authLogin, 
+            {
+                email,
+                password,
+                returnSecureToken: true
+            }
+        )
     }
 }
