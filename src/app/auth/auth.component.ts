@@ -35,10 +35,10 @@ export class AuthComponent implements OnInit {
 
     this.isLoading = true;
     if(this.isLoginMode) {
-      this.authService.login(email,password)
+      authObs = this.authService.login(email,password)
         
     } else {
-      this.authService.signup(email, password)
+      authObs = this.authService.signup(email, password)
         
     }
 
@@ -52,7 +52,7 @@ export class AuthComponent implements OnInit {
         this.isLoading = false;
       }
     );
-    
+
     form.reset();
   }
 
