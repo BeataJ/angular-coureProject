@@ -10,7 +10,8 @@ interface AuthResponseData {
     email: string,
     refreshToken: string,
     expiresIn: string,
-    localId: string
+    localId: string,
+    registered?: boolean
 }
 
 @Injectable({
@@ -42,7 +43,7 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        this.http.post(environment.authLogin, 
+        this.http.post<AuthResponseData>(environment.authLogin,
             {
                 email,
                 password,
