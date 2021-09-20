@@ -5,7 +5,7 @@ import { throwError } from "rxjs";
 
 import { environment } from "../../environment-app";
 
-interface AuthResponseData {
+export interface AuthResponseData {
     idToken: string,
     email: string,
     refreshToken: string,
@@ -43,7 +43,7 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        this.http.post<AuthResponseData>(environment.authLogin,
+        return this.http.post<AuthResponseData>(environment.authLogin,
             {
                 email,
                 password,
