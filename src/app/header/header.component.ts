@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
+import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from './../shared/data-storage.service'
 
 @Component({
@@ -8,12 +10,17 @@ import { DataStorageService } from './../shared/data-storage.service'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  private userSub: Subscription
   collapsed = true;
   
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(
+    private dataStorageService: DataStorageService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
+    this.authService.user.subscribe()
   }
 
   onSaveData(){
