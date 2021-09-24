@@ -6,6 +6,7 @@ import { environment } from "../../../src/environment-app"
 import { Recipe } from "../recipes/recipe.model";
 import {  map, tap } from "rxjs/operators";
 import { Ingredient } from "./ingredient.model";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,8 @@ import { Ingredient } from "./ingredient.model";
 export class DataStorageService {
     constructor(
         private http: HttpClient,
-        private recipeService: RecipeService
+        private recipeService: RecipeService,
+        private authService: AuthService
         ) {}
 
     storeRecipes() {
