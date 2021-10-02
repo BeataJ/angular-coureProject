@@ -56,7 +56,7 @@ export class AuthComponent implements OnInit {
       errorMessage => {
         console.log(errorMessage);
         this.error = errorMessage;
-        this.showerrorAlert(errorMessage);
+        this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
     );
@@ -68,7 +68,9 @@ export class AuthComponent implements OnInit {
     this.error = null;
   }
 
-  private showerrorAlert(message: string){
-    this.componentFactoryResolver.resolveComponentFactory(AlertComponent)
+  private showErrorAlert(message: string){
+    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
+
+    
   }
 }
