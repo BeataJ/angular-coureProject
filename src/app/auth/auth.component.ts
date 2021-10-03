@@ -2,7 +2,7 @@ import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService, AuthResponseData } from './auth.service';
 import { AlertComponent } from '../shared/alert/alert.component';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
@@ -19,6 +19,7 @@ export class AuthComponent implements OnInit {
   error: string = null;
   @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective
 
+  private closeSub: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -77,6 +78,13 @@ export class AuthComponent implements OnInit {
     const hostViewContenerRef = this.alertHost.viewContainerRef;
     hostViewContenerRef.clear();
 
-    hostViewContenerRef.createComponent(alertCmpFactory);
+    const componentRef = hostViewContenerRef.createComponent(alertCmpFactory);
+
+    componentRef.instance.message = message;
+    this.closeSub = componentRef.instance.close.subscribe(() => {
+      this.closeSub.unsubscribe();
+       hostViewContenerRef.clear();
+    });
+
   }
 }
