@@ -5,8 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ShopingListComponent } from './shoping-list/shoping-list.component';
-import { ShopingEditComponent } from './shoping-list/shoping-edit/shoping-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
@@ -20,8 +18,6 @@ import { RecipesModule } from './recipes/recipes.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShopingListComponent,
-    ShopingEditComponent,
     DropdownDirective,
     AuthComponent,
     LoadingSpinnerComponent,
