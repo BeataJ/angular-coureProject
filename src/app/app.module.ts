@@ -21,7 +21,6 @@ import { CoreModule } from './core.module';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     RecipesModule,
