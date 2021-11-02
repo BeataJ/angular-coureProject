@@ -9,6 +9,7 @@ import { RecipesModule } from './recipes/recipes.module';
 import { ShopingListModule } from './shoping-list/shoping-list.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CoreModule } from './core.module';
     AppRoutingModule,
     RecipesModule,
     ShopingListModule,
+    AuthModule,
     SharedModule,
     CoreModule
   ],
