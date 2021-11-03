@@ -20,4 +20,4 @@ import { ShoppingListComponent } from "./shopping-list.component";
        SharedModule
     ]
 })
-export class ShopingListModule {}
+export class ShoppingListModule {}
