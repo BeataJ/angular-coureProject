@@ -3,22 +3,22 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import { ShopingListService } from '../shoping-list.service';
+import { ShoppingListService } from '../shopping-list.service';
 
 
 @Component({
-  selector: 'app-shoping-edit',
-  templateUrl: './shoping-edit.component.html',
-  styleUrls: ['./shoping-edit.component.css']
+  selector: 'app-shopping-edit',
+  templateUrl: './shopping-edit.component.html',
+  styleUrls: ['./shopping-edit.component.css']
 })
-export class ShopingEditComponent implements OnInit, OnDestroy {
+export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') slForm: NgForm
   subscription: Subscription
   editMode = false;
   editedItemIndex: number;
   editedItem: Ingredient;
 
-  constructor(private slService: ShopingListService) { }
+  constructor(private slService: ShoppingListService) { }
 
   ngOnInit(): void {
     this.subscription = this.slService.startedEditing
