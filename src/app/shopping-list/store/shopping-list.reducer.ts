@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Ingredient } from "../shared/ingredient.model";
+import { Ingredient } from "../../shared/ingredient.model";
 
 const initialState = {
     ingredients: [
