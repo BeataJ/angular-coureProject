@@ -15,6 +15,8 @@ export class AddIngredients implements Action {
     readonly type = ADD_INGREDIENTS;
 
     constructor(public payload: Ingredient[]) {
-        
+
     }
 }
+
+export type  ShoppingListActions = AddIngredient | AddIngredients;
