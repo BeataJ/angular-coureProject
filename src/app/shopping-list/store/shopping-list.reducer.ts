@@ -55,7 +55,19 @@ export function shoppingListReducer(
                 ingredients: state.ingredients.filter((ig, igIndex) => {
                     return igIndex !== action.payload;
                 })
-            };            
+            }; 
+        case ShoppingListActions.START_EDIT:
+            return {
+                ...state,
+                editedIngredientIndex: action.payload,
+                editedIngredient: { ...state.ingredients[action.payload] }
+            }
+        case ShoppingListActions.STOP_EDIT:
+            return {
+                ...state,
+                editedIngredient: null,
+                editedIngredientIndex: -1
+            }                   
         default:
             return state;
     };
