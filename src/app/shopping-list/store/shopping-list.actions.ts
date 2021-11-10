@@ -37,11 +37,13 @@ export class DeleteIngredient implements Action {
     }
 }
 
-export class StartEditIngredients implements Action {
+export class StartEdit implements Action {
     readonly type = START_EDIT;
+
+    constructor(public payload: number) {}
 }
 
-export class StopEditIngredients implements Action {
+export class StopEdit implements Action {
     readonly type = STOP_EDIT;
 }
 
@@ -51,4 +53,6 @@ export type ShoppingListActions =
 AddIngredient 
 | AddIngredients 
 | UpdateIngredient 
-| DeleteIngredient;
+| DeleteIngredient
+| StartEdit
+| StopEdit;
