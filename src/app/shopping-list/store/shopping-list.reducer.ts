@@ -8,17 +8,17 @@ export interface State {
     editedIngredientIndex: number
 }
 
-const initialState = {
+const initialState: State = {
     ingredients: [
         new Ingredient('Apples', 5),
         new Ingredient('Tomatoes', 10)
     ],
-    editedIngredien: null,
+    editedIngredient: null,
     editedIngredientIndex: -1
 }
 
 export function shoppingListReducer(
-    state=initialState, 
+    state: State =initialState, 
     action: ShoppingListActions.ShoppingListActions
     ) {
     switch(action.type) {
