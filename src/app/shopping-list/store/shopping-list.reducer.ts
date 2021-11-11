@@ -19,7 +19,7 @@ const initialState: State = {
 }
 
 export function shoppingListReducer(
-    state: State =initialState, 
+    state: State = initialState, 
     action: ShoppingListActions.ShoppingListActions
     ) {
     switch(action.type) {
