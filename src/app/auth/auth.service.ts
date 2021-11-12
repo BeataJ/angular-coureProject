@@ -3,9 +3,12 @@ import { Injectable } from "@angular/core";
 import { catchError, tap } from "rxjs/operators";
 import { BehaviorSubject, throwError } from "rxjs";
 import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
 
 import { environment } from "../../environment-app";
 import { User } from "./user.model";
+import * as fromApp from '../store/app.reducer';
+
 
 
 export interface AuthResponseData {
@@ -26,7 +29,8 @@ export class AuthService {
 
     constructor(
         private http: HttpClient,
-        private router: Router
+        private router: Router,
+        private store: Store<fromApp.AppState>
         ) {}
 
     signup(email: string, password: string) {
