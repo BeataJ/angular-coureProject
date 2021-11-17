@@ -2,11 +2,13 @@ import { User } from "../user.model";
 import * as AuthActions  from "./auth.actions";
 
 export interface State {
-    user: User
+    user: User,
+    authError: string
 }
 
 const initialState: State = {
-    user: null
+    user: null,
+    authError: null
 }
 
 export function authReducer(state = initialState, action: AuthActions.AuthActions) {
@@ -21,6 +23,7 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
             )
             return {
                 ...state,
+                authError: null,
                 user: user
             }
         case AuthActions.LOGOUT:
@@ -28,6 +31,16 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
                 ...state,
                 user: null
             }
+        case AuthActions.LOGIN_START:
+            return {
+                ...state,
+                authError: null
+            }
+        case AuthActions.LOGIN_FAIL:
+            return {
+                ...state,
+                authError: action.payload
+            }        
         default:
             return state;    
     }

@@ -1,4 +1,3 @@
-import { Actions } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 
 export const LOGIN_START = '[Auth] Login Start';
@@ -35,4 +34,4 @@ export class LoginFail implements Action {
     constructor(public payload: string) {}
 }
 
-export type AuthActions = Login | Logout;
+export type AuthActions = Login | Logout | LoginStart | LoginFail;
