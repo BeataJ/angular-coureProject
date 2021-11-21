@@ -33,45 +33,7 @@ export class AuthService {
         private store: Store<fromApp.AppState>
         ) {}
 
-    signup(email: string, password: string) {
-       return this.http.post<AuthResponseData>(environment.authSignUp,
-        {
-            email,
-            password,
-            returnSecureToken: true
-        })
-        .pipe(
-            catchError(this.handleError),
-            tap(resData => {
-                 this.handleAuthentication(
-                     resData.email,
-                     resData.localId,
-                     resData.idToken,
-                     +resData.expiresIn
-                 )
-            })
-        ) 
-    }
-
-    login(email: string, password: string) {
-        return this.http.post<AuthResponseData>(environment.authLogin,
-            {
-                email,
-                password,
-                returnSecureToken: true
-            }
-        ).pipe(
-            catchError(this.handleError),
-            tap(resData => {
-                this.handleAuthentication(
-                    resData.email,
-                    resData.localId,
-                    resData.idToken,
-                    +resData.expiresIn
-                )
-            })
-        )
-    }
+    
 
     authLogin() {
         const userData: {
