@@ -21,41 +21,40 @@ export interface AuthResponseData {
 
 
 const handleAuthentication = (
-    expiresIn: number, 
-    email: string, 
-    userId: string, 
-    token: string) => {
+    expiresIn: number,
+    email: string,
+    userId: string,
+    token: string
+) => {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     localStorage.setItem('userData', JSON.stringify(user));
     return new AuthActions.AuthenticateSuccess({
-        email:email,
+        email: email,
         userId: userId,
         token: token,
         expirationDate: expirationDate
-    })
-}
+    });
+};
 
 const handleError = (errorRes: any) => {
-    let errorMessage = 'An unknowerror occurred!'
+    let errorMessage = 'An unknown error occurred!';
     if (!errorRes.error || !errorRes.error.error) {
-        return of(new AuthActions.AuthenticateFail(errorMessage))
-    };
-
+        return of(new AuthActions.AuthenticateFail(errorMessage));
+    }
     switch (errorRes.error.error.message) {
         case 'EMAIL_EXISTS':
             errorMessage = 'This email exists already';
             break;
         case 'EMAIL_NOT_FOUND':
-            errorMessage = 'This email does not exist';
+            errorMessage = 'This email does not exist.';
             break;
         case 'INVALID_PASSWORD':
             errorMessage = 'This password is not correct.';
             break;
-
     }
-    return of(new AuthActions.AuthenticateFail(errorMessage))
-}
+    return of(new AuthActions.AuthenticateFail(errorMessage));
+};
 
 @Injectable()
 export class AuthEffects {
@@ -133,7 +132,7 @@ export class AuthEffects {
                 email: string,
                 id: string,
                 _token: string,
-                _tokenExpirationData
+                _tokenExpirationDate: string
             } = JSON.parse(localStorage.getItem('userData'));
             if (!userData) {
                 return { type: 'DUMMY' }
@@ -143,22 +142,21 @@ export class AuthEffects {
                 userData.email,
                 userData.id,
                 userData._token,
-                new Date(userData._tokenExpirationData)
+                new Date(userData._tokenExpirationDate)
             )
 
             if (loadedUser.token) {
                 // this.user.next(loadedUser);
-                const exprationDuration = new Date(userData._tokenExpirationData).getTime() - new Date().getTime()
+                const exprationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime()
                 this.authService.setLogoutTimer(exprationDuration)
                  return new AuthActions.AuthenticateSuccess({
                     email: loadedUser.email,
                     userId: loadedUser.id,
                     token: loadedUser.token,
-                    expirationDate: new Date(userData._tokenExpirationData)
-                })
-                // const exprationDuration = new Date(userData._tokenExpirationData).getTime() - new Date().getTime()
-                // this.authLogout(exprationDuration)
-            }
+                    expirationDate: new Date(userData._tokenExpirationDate)
+                
+            });
+        }
             return { type: 'DUMMY'}
         })
     )
