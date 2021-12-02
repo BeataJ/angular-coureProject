@@ -26,11 +26,12 @@ export class AddIngredients implements Action {
 export class UpdateIngredient implements Action {
     readonly type = UPDATE_INGREDIENT;
 
-    constructor(public payload:Ingredient) {}
+    constructor(public payload: Ingredient) {}
 }
 
 export class DeleteIngredient implements Action {
     readonly type = DELETE_INGREDIENT;
+
 }
 
 export class StartEdit implements Action {
@@ -46,7 +47,7 @@ export class StopEdit implements Action {
 
 
 export type ShoppingListActions = 
-AddIngredient 
+|AddIngredient 
 | AddIngredients 
 | UpdateIngredient 
 | DeleteIngredient
