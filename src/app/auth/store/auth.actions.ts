@@ -52,7 +52,7 @@ export class AutoLogin implements Action {
 }
 
 export type AuthActions = 
- |AuthenticateSuccess 
+ AuthenticateSuccess 
  | Logout 
  | LoginStart 
  | AuthenticateFail 
