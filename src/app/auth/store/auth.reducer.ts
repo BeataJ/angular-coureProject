@@ -49,6 +49,7 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         case AuthActions.AUTHENTICATE_FAIL:
             return {
                 ...state,
+                user: null,
                 authError: action.payload,
                 loading:false
             }
