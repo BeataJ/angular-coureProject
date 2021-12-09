@@ -129,13 +129,13 @@ export class AuthEffects {
         ofType(AuthActions.AUTO_LOGIN),
         map(() => {
             const userData: {
-                email: string,
-                id: string,
-                _token: string,
-                _tokenExpirationDate: string
+                email: string;
+                id: string;
+                _token: string;
+                _tokenExpirationDate: string;
             } = JSON.parse(localStorage.getItem('userData'));
             if (!userData) {
-                return { type: 'DUMMY' }
+                return { type: 'DUMMY' };
             }
 
             const loadedUser = new User(
@@ -143,33 +143,38 @@ export class AuthEffects {
                 userData.id,
                 userData._token,
                 new Date(userData._tokenExpirationDate)
-            )
+            );
 
             if (loadedUser.token) {
                 // this.user.next(loadedUser);
-                const exprationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime()
-                this.authService.setLogoutTimer(exprationDuration)
-                 return new AuthActions.AuthenticateSuccess({
+                const expirationDuration =
+                    new Date(userData._tokenExpirationDate).getTime() -
+                    new Date().getTime();
+                this.authService.setLogoutTimer(expirationDuration);
+                return new AuthActions.AuthenticateSuccess({
                     email: loadedUser.email,
                     userId: loadedUser.id,
                     token: loadedUser.token,
                     expirationDate: new Date(userData._tokenExpirationDate)
-                
-            });
-        }
-            return { type: 'DUMMY'}
-        })
-    )
+                });
 
-    @Effect({dispatch: false})
+                // const expirationDuration =
+                //   new Date(userData._tokenExpirationDate).getTime() -
+                //   new Date().getTime();
+                // this.autoLogout(expirationDuration);
+            }
+            return { type: 'DUMMY' };
+        })
+    );
+
+    @Effect({ dispatch: false })
     authLogout = this.actions$.pipe(
         ofType(AuthActions.LOGOUT),
         tap(() => {
             this.authService.clearLogoutTimer();
             localStorage.removeItem('userData');
-            this.router.navigate(['/auth'])
         })
-    )
+    );
 
     constructor(
         private actions$: Actions,
