@@ -75,9 +75,10 @@ export class AuthEffects {
                 map(resData => {
                     return handleAuthentication(
                         +resData.expiresIn, 
-                        resData.email, 
-                        resData.idToken,
-                        resData.localId
+                        resData.email,
+                        resData.localId, 
+                        resData.idToken
+                        
                     )
                 }),
                 catchError(errorRes => {
@@ -105,8 +106,9 @@ export class AuthEffects {
                         return handleAuthentication(
                             +resData.expiresIn,
                             resData.email,
-                            resData.idToken,
-                            resData.localId
+                            resData.localId,
+                            resData.idToken
+                           
                         )
                     }),
                     catchError(errorRes => {
