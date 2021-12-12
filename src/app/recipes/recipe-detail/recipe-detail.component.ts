@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
@@ -24,23 +24,20 @@ export class RecipeDetailComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-          // this.recipe = this.recipieService.getRecipe(this.id)
-          this.store.select('recipes')
-            .pipe(
-              map(recipeState => {
-                return recipeState.recipes.find((recipe,index)=> {
-                  return index === this.id
-                })
-              })
-            ).subscribe(recipe => {
-              this.recipe = recipe;
-            })
-        }
-      )
+    this.route.params.pipe(map(params => {
+      return +params['id'];
+    }), switchMap(id => {
+      this.id = id;
+      return this.store.select('recipes')
+    }),
+      map(recipeState => {
+        return recipeState.recipes.find((recipe, index) => {
+          return index === this.id
+        })
+      })
+    ).subscribe(recipe => {
+      this.recipe = recipe;
+    })
   }
 
   onAddToShopingList() {
