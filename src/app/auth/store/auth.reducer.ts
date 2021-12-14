@@ -17,7 +17,7 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
     console.log(state)
     switch(action.type) {
         case AuthActions.AUTHENTICATE_SUCCESS:
-           
+         
             const user = new User(
                 action.payload.email,
                 action.payload.userId,
@@ -53,7 +53,7 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
             return {
                 ...state,
                 authError: null
-            }           
+            }    
         default:
             return state;    
     }
