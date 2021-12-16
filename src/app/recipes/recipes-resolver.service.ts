@@ -7,7 +7,7 @@ import { of } from "rxjs";
 
 
 import * as fromApp from '../store/app.reducer';
-import * as RecipesActions from '../recipes/store/recipe.action';
+import * as RecipesActions from './store/recipe.actions';
 import { Recipe } from "./recipe.model";
 
 

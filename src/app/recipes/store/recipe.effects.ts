@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as RecipesActions from './recipe.action';
+import * as RecipesActions from './recipe.actions';
 import { Recipe } from '../recipe.model';
 import { environment } from '../../../environment-app';
 import * as fromApp from '../../store/app.reducer'

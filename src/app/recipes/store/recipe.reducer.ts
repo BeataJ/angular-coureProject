@@ -1,5 +1,5 @@
 import { Recipe } from "../recipe.model";
-import * as RecipesActions from './recipe.action';
+import * as RecipesActions from './recipe.actions';
 
 export interface State{
     recipes: Recipe[]
@@ -39,10 +39,10 @@ export function recipeReducer(state= initialState, action: RecipesActions.Recipe
         case RecipesActions.DELETE_RECIPE:
             return {
                 ...state,
-                recpies: state.recipes.filter((recipe,index) => {
+                recipes: state.recipes.filter((recipe, index) => {
                     return index !== action.payload;
                 })
-            }           
+            };       
         default:
             return state;    
     }

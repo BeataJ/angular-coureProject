@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from '../auth/store/auth.actions';
-import * as RecipesActions from '../recipes/store/recipe.action';
+import * as RecipesActions from '../recipes/store/recipe.actions';
 
 
 @Component({
